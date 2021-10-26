@@ -41,6 +41,10 @@ Once you understand how Faster R-CNN works, understanding Mask R-CNN will be ver
 So the mask rcnn has main stages :
   - The backbone model which is a simple classifier model
   - Region Proposal Network (RPN) which needs to find the Regions of Interests (ROI). For this it predicts 4 coordinates, and a label to each anchor.<br>
+  - Region of Interest (RoI)
+The regions obtained from the RPN might be of different shapes, right? Hence, we apply a pooling layer and convert all the regions to the same shape. Next, these regions are passed through a fully connected network so that the class label and bounding boxes are predicted.<br>
+  - Segmentation Mask
+Once we have the RoIs based on the IoU values, we can add a mask branch to the existing architecture. This returns the segmentation mask for each region that contains an object. It returns a mask of size 28 X 28 for each region which is then scaled up for inference.<br>
   
 <!-- INSTALLATION -->
 ## ➲ Installation
